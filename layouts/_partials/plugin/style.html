@@ -20,6 +20,9 @@
         {{- with .ToCSS -}}
             {{- $resource = $resource | toCSS . -}}
         {{- end -}}
+        {{- if .PostCSS -}}
+            {{- $resource = $resource | css.PostCSS -}}
+        {{- end -}}
         {{- if .Minify -}}
             {{- $resource = $resource | minify -}}
         {{- end -}}

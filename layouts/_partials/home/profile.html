@@ -1,11 +1,11 @@
 {{- $profile := .Site.Params.home.profile -}}
-<div class="home-profile">
+<div class="home-profile p-0 pb-2 text-center translate-y-[16vh]">
     {{- $avatar := $profile.avatarURL -}}
     {{- with $profile.gravatarEmail -}}
         {{- $avatar = md5 . | printf "https://www.gravatar.com/avatar/%v?s=240&d=mp" -}}
     {{- end -}}
     {{- if $avatar -}}
-        <div class="home-avatar">
+        <div class="home-avatar p-2">
             {{- $menus := $.Site.Menus.main | default slice -}}
             {{- with index $menus 0 -}}
                 {{- $url := .URL | relLangURL -}}
@@ -13,22 +13,22 @@
                     {{- $url = .RelPermalink -}}
                 {{- end -}}
                 <a href="{{ $url }}"{{ with .Title | default .Name }} title="{{ . }}"{{ end }}{{ if (urls.Parse $url).Host }} rel="noopener noreffer" target="_blank"{{ end }}>
-                    {{- dict "Src" $avatar | partial "plugin/img.html" -}}
+                    {{- dict "Src" $avatar "Class" "inline-block w-32 h-auto mx-auto rounded-full shadow-[0_0_0_.3618em_rgba(0,0,0,.05)] transition-all duration-400 hover:relative hover:-translate-y-3" | partial "plugin/img.html" -}}
                 </a>
             {{- else -}}
-                {{- dict "Src" $avatar | partial "plugin/img.html" -}}
+                {{- dict "Src" $avatar "Class" "inline-block w-32 h-auto mx-auto rounded-full shadow-[0_0_0_.3618em_rgba(0,0,0,.05)] transition-all duration-400 hover:relative hover:-translate-y-3" | partial "plugin/img.html" -}}
             {{- end -}}
         </div>
     {{- end -}}
 
     {{- with $profile.title -}}
-        <h1 class="home-title">
+        <h1 class="home-title text-xl font-bold m-0 p-2">
             {{- . | safeHTML -}}
         </h1>
     {{- end -}}
 
     {{- with $profile.subtitle -}}
-        <div class="home-subtitle">
+        <div class="home-subtitle text-base font-normal m-0 p-2">
             {{- if $profile.typeit -}}
                 {{- $id := dict "Content" . "Scratch" $.Scratch | partial "function/id.html" -}}
                 <div id="{{ $id }}" class="typeit"></div>
@@ -40,7 +40,7 @@
     {{- end -}}
 
     {{- if $profile.social -}}
-        <div class="links">
+        <div class="links p-2 text-2xl">
             {{- $socialMap := resources.Get "data/social.yml" | transform.Unmarshal -}}
             {{- $socialArr := slice -}}
             {{- range $key, $value := .Site.Params.social -}}
@@ -94,7 +94,7 @@
     {{- end -}}
 
     {{- with $profile.disclaimer -}}
-        <h3 class="home-disclaimer">
+        <h3 class="home-disclaimer text-base leading-6 font-normal m-0 p-2 text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
             {{- . | safeHTML -}}
         </h3>
     {{- end -}}

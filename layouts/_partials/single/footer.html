@@ -1,15 +1,15 @@
 {{- $params := .Scratch.Get "params" -}}
 
-<div class="post-footer" id="post-footer">
-    <div class="post-info">
-        <div class="post-info-line">
-            <div class="post-info-mod">
+<div class="post-footer mt-12" id="post-footer">
+    <div class="post-info border-b border-[var(--color-border)] dark:border-[var(--color-border-dark)] pt-4 pb-1">
+        <div class="post-info-line flex justify-between">
+            <div class="post-info-mod text-[0.8em] text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
                 <span>
                     {{- with .Site.Params.dateformat | default "2006-01-02" | .Lastmod.Format -}}
                         {{- dict "Date" . | T "updatedOnDate" -}}
                         {{- if $.Site.Params.gitRepo -}}
                             {{- with $.GitInfo -}}
-                                &nbsp;<a class="git-hash" href="{{ printf `%v/commit/%v` $.Site.Params.gitRepo .Hash }}" target="_blank" title="commit by {{ .AuthorName }}({{ .AuthorEmail }}) {{ .Hash }}: {{ .Subject }}">
+                                &nbsp;<a class="git-hash text-[var(--color-single-link)] dark:text-[var(--color-single-link-dark)] hover:text-[var(--color-single-link-hover)] dark:hover:text-[var(--color-single-link-hover-dark)]" href="{{ printf `%v/commit/%v` $.Site.Params.gitRepo .Hash }}" target="_blank" title="commit by {{ .AuthorName }}({{ .AuthorEmail }}) {{ .Hash }}: {{ .Subject }}">
                                     <i class="fas fa-hashtag" aria-hidden="true"></i>{{- .AbbreviatedHash -}}
                                 </a>
                             {{- end -}}
@@ -18,23 +18,23 @@
                 </span>
             </div>
             {{- if eq .Site.Params.analytics.enable true -}}
-            <div id="page-views" class="post-info-mod">
+            <div id="page-views" class="post-info-mod text-[0.8em] text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
             </div>
             {{- end -}}
             {{- with $params.license | string -}}
-            <div class="post-info-license">
+            <div class="post-info-license text-[0.8em] text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
                 <span>
                     {{- . | safeHTML -}}
                 </span>
             </div>
             {{- end -}}
         </div>
-        <div class="post-info-line">
-            <div class="post-info-md">
+        <div class="post-info-line flex justify-between">
+            <div class="post-info-md text-[0.8rem] w-32">
                 {{- if $params.linktomarkdown -}}
                     {{- with .OutputFormats.Get "markdown" -}}
                         <span>
-                            <a class="link-to-markdown" href="{{ .RelPermalink }}" target="_blank">
+                            <a class="link-to-markdown text-[var(--color-single-link)] dark:text-[var(--color-single-link-dark)] hover:text-[var(--color-single-link-hover)] dark:hover:text-[var(--color-single-link-hover-dark)]" href="{{ .RelPermalink }}" target="_blank">
                                 {{- T "readMarkdown" -}}
                             </a>
                         </span>
@@ -49,8 +49,8 @@
         </div>
     </div>
 
-    <div class="post-info-more">
-        <section class="post-tags">
+    <div class="post-info-more py-1 pb-4 flex justify-between text-[0.9rem]">
+        <section class="post-tags max-w-[65%]">
             {{- with .Params.tags -}}
                 <i class="fas fa-tags" aria-hidden="true"></i>&nbsp;
                 {{- range $index, $value := . -}}
@@ -65,7 +65,7 @@
         </section>
     </div>
 
-    <div class="post-nav">
+    <div class="post-nav after:content-['_'] after:table before:content-['_'] before:table">
         {{- $prevPage := false -}}
         {{- $nextPage := false -}}
         {{- if or (.Params.prev) (.Params.next) -}}
@@ -80,10 +80,10 @@
             {{- $nextPage = .NextInSection -}}
         {{- end -}}
         {{- with $prevPage -}}
-            <a href="{{ .RelPermalink }}" class="prev" rel="prev" title="{{ .Title }}"><i class="fas fa-angle-left" aria-hidden="true"></i>{{ .Title | emojify }}</a>
+            <a href="{{ .RelPermalink }}" class="prev float-left text-base font-semibold transition-all duration-300 ease-out hover:-translate-x-1" rel="prev" title="{{ .Title }}"><i class="fas fa-angle-left" aria-hidden="true"></i>{{ .Title | emojify }}</a>
         {{- end -}}
         {{ with $nextPage }}
-            <a href="{{ .RelPermalink }}" class="next" rel="next" title="{{ .Title }}">{{ .Title | emojify }}<i class="fas fa-angle-right" aria-hidden="true"></i></a>
+            <a href="{{ .RelPermalink }}" class="next float-right text-base font-semibold transition-all duration-300 ease-out hover:translate-x-1" rel="next" title="{{ .Title }}">{{ .Title | emojify }}<i class="fas fa-angle-right" aria-hidden="true"></i></a>
         {{- end -}}
     </div>
 </div>

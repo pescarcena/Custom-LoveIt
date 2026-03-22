@@ -6,7 +6,7 @@
     {{- $params := .Scratch.Get "params" -}}
     {{- $profile := .Site.Params.home.profile -}}
 
-    <div class="page home" data-home="posts">
+    <div class="page home relative max-w-[1080px] w-[64%] mx-auto pt-[var(--header-height)] max-xl:w-[56%] max-lg:w-[52%] max-md:w-[80%] max-sm:w-full pb-20" data-home="posts">
         {{- /* Profile */ -}}
         {{- if ne $profile.enable false -}}
             {{- partial "home/profile.html" . -}}
@@ -22,11 +22,11 @@
             {{- end -}}
 
             {{- /* View toggle */ -}}
-            <div class="posts-view-toggle">
-                <button class="view-btn active" data-view="list" title="List view">
+            <div class="posts-view-toggle flex justify-end gap-1 mb-6">
+                <button class="view-btn active bg-transparent border border-current text-inherit opacity-30 px-2.5 py-1.5 cursor-pointer rounded transition-opacity duration-200 hover:opacity-60 [&.active]:opacity-80" data-view="list" title="List view">
                     <i class="fas fa-list"></i>
                 </button>
-                <button class="view-btn" data-view="grid" title="Grid view">
+                <button class="view-btn bg-transparent border border-current text-inherit opacity-30 px-2.5 py-1.5 cursor-pointer rounded transition-opacity duration-200 hover:opacity-60 [&.active]:opacity-80" data-view="grid" title="Grid view">
                     <i class="fas fa-th-large"></i>
                 </button>
             </div>

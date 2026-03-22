@@ -18,22 +18,22 @@
         </div>
     {{- end -}}
 
-    <article class="page single">
+    <article class="page single relative max-w-[1080px] w-[64%] mx-auto pt-[var(--header-height)] max-xl:w-[56%] max-lg:w-[52%] max-md:w-[80%] max-sm:w-full">
         {{- /* Title */ -}}
-        <h1 class="single-title animate__animated animate__flipInX">{{ .Title | emojify }}</h1>
+        <h1 class="single-title text-[1.6rem] font-bold leading-[140%] mt-8 mb-2 animate__animated animate__flipInX">{{ .Title | emojify }}</h1>
 
         {{- /* Subtitle */ -}}
         {{- with $params.subtitle -}}
-            <h2 class="single-subtitle">{{ . }}</h2>
+            <h2 class="single-subtitle text-[1.2rem] font-normal leading-none my-2">{{ . }}</h2>
         {{- end -}}
 
         {{- /* Meta */ -}}
-        <div class="post-meta">
+        <div class="post-meta text-sm text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
             <div class="post-meta-line">
                 {{- $author := $params.author | default .Site.Params.Author.name | default (T "author") -}}
                 {{- $authorLink := $params.authorlink | default .Site.Params.Author.link | default .Site.Home.RelPermalink -}}
                 <span class="post-author">
-                    {{- $options := dict "Class" "author" "Destination" $authorLink "Title" "Author" "Rel" "author" "Icon" (dict "Class" "fas fa-user-circle") "Content" $author -}}
+                    {{- $options := dict "Class" "author text-[1.05rem]" "Destination" $authorLink "Title" "Author" "Rel" "author" "Icon" (dict "Class" "fas fa-user-circle") "Content" $author -}}
                     {{- partial "plugin/a.html" $options -}}
                 </span>
 
@@ -69,8 +69,8 @@
             {{- $image = .RelPermalink -}}
         {{- end -}}
         {{- with $image -}}
-            <div class="featured-image">
-                {{- dict "Src" . "Title" $.Description "Resources" $.Resources | partial "plugin/img.html" -}}
+            <div class="featured-image my-2 mt-2 mb-4">
+                {{- dict "Src" . "Title" $.Description "Resources" $.Resources "Class" "block max-w-full h-auto mx-auto overflow-hidden lazyloaded:w-full" | partial "plugin/img.html" -}}
             </div>
         {{- end -}}
 

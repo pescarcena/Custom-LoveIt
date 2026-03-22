@@ -3,9 +3,9 @@
 {{- end -}}
 
 {{- define "content" -}}
-    <div class="page archive">
+    <div class="page archive relative max-w-[1080px] w-[64%] mx-auto pt-[var(--header-height)] max-xl:w-[56%] max-lg:w-[52%] max-md:w-[80%] max-sm:w-full">
         {{- /* Title */ -}}
-        <h2 class="single-title animate__animated animate__pulse animate__faster">
+        <h2 class="single-title text-right text-[1.6rem] font-bold leading-[140%] mt-8 mb-2 animate__animated animate__pulse animate__faster">
             {{- .Params.Title | default (T .Section) | default .Section | dict "Some" | T "allSome" -}}
         </h2>
 
@@ -18,13 +18,13 @@
                 {{- $pages = .Paginate $pages -}}
             {{- end -}}
             {{- range $pages.PageGroups -}}
-                <h3 class="group-title">{{ .Key }}</h3>
+                <h3 class="group-title mt-6 mb-4">{{ .Key }}</h3>
                 {{- range .Pages -}}
-                    <article class="archive-item">
-                        <a href="{{ .RelPermalink }}" class="archive-item-link">
+                    <article class="archive-item flex justify-between items-center box-border my-1 ml-6">
+                        <a href="{{ .RelPermalink }}" class="archive-item-link min-w-[10%] overflow-hidden whitespace-nowrap text-ellipsis hover:text-[var(--color-link-hover)] dark:text-[var(--color-link-dark)] dark:hover:text-[var(--color-link-hover-dark)]">
                             {{- .Title | emojify -}}
                         </a>
-                        <span class="archive-item-date">
+                        <span class="archive-item-date w-[5em] text-right text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">
                             {{- $.Site.Params.section.dateFormat | default "01-02" | .Date.Format -}}
                         </span>
                     </article>

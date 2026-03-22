@@ -2,15 +2,15 @@
 
 {{- define "content" -}}
     {{- $params := .Scratch.Get "params" -}}
-    <div class="page single special">
+    <div class="page single special relative max-w-[1080px] w-[64%] mx-auto pt-[var(--header-height)] max-xl:w-[56%] max-lg:w-[52%] max-md:w-[80%] max-sm:w-full">
         {{- /* Title */ -}}
-        <h1 class="single-title animate__animated animate__pulse animate__faster">
+        <h1 class="single-title text-right text-[1.6rem] font-bold leading-[140%] mt-8 mb-2 animate__animated animate__pulse animate__faster">
             {{- .Title -}}
         </h1>
 
         {{- /* Subtitle */ -}}
         {{- with $params.subtitle -}}
-            <h2 class="single-subtitle">{{ . }}</h2>
+            <h2 class="single-subtitle text-right text-[1.2rem] font-normal leading-none my-2">{{ . }}</h2>
         {{- end -}}
 
         {{- /* Content */ -}}

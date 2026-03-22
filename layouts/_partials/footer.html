@@ -1,23 +1,23 @@
 {{- if ne .Site.Params.footer.enable false -}}
-    <footer class="footer">
-        <div class="footer-container">
+    <footer class="h-8 w-full text-center leading-5 py-4">
+        <div class="footer-container text-sm">
             {{- /* Custom Content */ -}}
             {{- with .Site.Params.footer.custom -}}
-                <div class="footer-line">
+                <div class="footer-line w-full">
                     {{- safeHTML . -}}
                 </div>
             {{- end -}}
 
             {{- /* Hugo and LoveIt */ -}}
             {{- if ne .Site.Params.footer.hugo false -}}
-                <div class="footer-line">
+                <div class="footer-line w-full">
                     {{- $hugo := printf `<a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo %v">Hugo</a>` hugo.Version -}}
                     {{- $theme := .Scratch.Get "version" | printf `<a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt %v"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>` -}}
                     {{- dict "Hugo" $hugo "Theme" $theme | T "poweredBySome" | safeHTML }}
                 </div>
             {{- end -}}
 
-            <div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork">
+            <div class="footer-line w-full" itemscope itemtype="http://schema.org/CreativeWork">
                 {{- /* Copyright year */ -}}
                 {{- if ne .Site.Params.footer.copyright false -}}
                     <i class="far fa-copyright" aria-hidden="true"></i>
@@ -42,7 +42,7 @@
 
                 {{- /* ICP */ -}}
                 {{- with .Site.Params.footer.icp -}}
-                    <span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br hidden"/>
                     <span class="icp">{{ . | safeHTML }}</span>
                 {{- end -}}
             </div>

@@ -7,16 +7,16 @@
     {{- $terms := .Data.Terms.ByCount -}}
     {{- $type := .Type -}}
 
-    <div class="page archive">
+    <div class="page archive relative max-w-[1080px] w-[64%] mx-auto pt-[var(--header-height)] max-xl:w-[56%] max-lg:w-[52%] max-md:w-[80%] max-sm:w-full">
         {{- /* Title */ -}}
-        <h2 class="single-title animate__animated animate__pulse animate__faster">
+        <h2 class="single-title text-right text-[1.6rem] font-bold leading-[140%] mt-8 mb-2 animate__animated animate__pulse animate__faster">
             {{- .Params.Title | default (T $taxonomies) | default $taxonomies | dict "Some" | T "allSome" -}}
         </h2>
 
         {{- /* Tag Cloud Page */ -}}
-        <div class="tag-cloud-tags">
+        <div class="tag-cloud-tags my-2.5">
             {{- range $.Site.Taxonomies.tags.ByCount -}}
-                <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <sup>{{ .Count }}</sup></a>
+                <a href="{{ .Page.RelPermalink }}" class="inline-block relative mx-2.5 my-1.5 break-words transition-all duration-300 ease-out hover:scale-[1.2]">{{ .Page.Title }} <sup class="text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]">{{ .Count }}</sup></a>
             {{- end -}}
         </div>
     </div>
