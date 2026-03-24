@@ -1,5 +1,5 @@
 {{- $profile := .Site.Params.home.profile -}}
-<div class="home-profile p-0 pb-2 text-center translate-y-[16vh]">
+<div class="home-profile p-0 pb-2 text-center">
     {{- $avatar := $profile.avatarURL -}}
     {{- with $profile.gravatarEmail -}}
         {{- $avatar = md5 . | printf "https://www.gravatar.com/avatar/%v?s=240&d=mp" -}}

@@ -1,6 +1,5 @@
 User-agent: *
-
-Disallow: /images/
+Allow: /
 Disallow: /js/
 Disallow: /css/
 
@@ -13,52 +12,26 @@ Disallow: /
 User-agent: BLEXBot
 Disallow: /
 
-# Block SISTRIX
 User-agent: SISTRIX Crawler
 Disallow: /
+
 User-agent: sistrix
-Disallow: /
-User-agent: 007ac9
-Disallow: /
-User-agent: 007ac9 Crawler
-Disallow: /
-
-# Block Uptime robot
-User-agent: UptimeRobot/2.0
-Disallow: /
-
-# Block Ezooms Robot
-User-agent: Ezooms Robot
-Disallow: /
-
-# Block Perl LWP
-User-agent: Perl LWP
-Disallow: /
-
-# Block netEstate NE Crawler (+http://www.website-datenbank.de/)
-User-agent: netEstate NE Crawler (+http://www.website-datenbank.de/)
-Disallow: /
-
-# Block WiseGuys Robot
-User-agent: WiseGuys Robot
-Disallow: /
-
-# Block Turnitin Robot
-User-agent: Turnitin Robot
-Disallow: /
-
-# Block Heritrix
-User-agent: Heritrix
-Disallow: /
-
-# Block pricepi
-User-agent: pimonster
 Disallow: /
 
 User-agent: SurdotlyBot
 Disallow: /
 
 User-agent: ZoominfoBot
+Disallow: /
+
+# Block AI training crawlers
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Google-Extended
 Disallow: /
 
 Sitemap: {{ "/sitemap.xml" | absLangURL }}

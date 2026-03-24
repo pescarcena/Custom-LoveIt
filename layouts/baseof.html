@@ -5,8 +5,12 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="robots" content="noodp" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+
+        {{- /* DNS preconnect for CDN resources used by the theme */ -}}
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 
         {{- partial "head/meta.html" . -}}
         {{- partial "head/link.html" . -}}

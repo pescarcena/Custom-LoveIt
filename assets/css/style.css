@@ -247,9 +247,13 @@ img.emoji {
   }
 }
 
+/* Home profile: center vertically when no posts */
+.home:not([data-home="posts"]) .home-profile {
+  transform: translateY(16vh);
+}
+
 /* Home posts profile adjustment */
 .home[data-home="posts"] .home-profile {
-  transform: translateY(0);
   padding-top: 2rem;
 }
 
